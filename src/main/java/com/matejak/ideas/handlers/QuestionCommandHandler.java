@@ -56,7 +56,7 @@ public class QuestionCommandHandler extends BaseCommandHandler {
                 }
 
                 String categoryName = command.getParams().get(0);
-                String questionName = command.getParamsText();
+                String questionName = command.getParamsText(1);
 
                 Category category = categoryDao.findOne(categoryName)
                         .orElseThrow(() -> new IllegalArgumentException("Category not found: " + categoryName));

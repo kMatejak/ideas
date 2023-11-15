@@ -45,10 +45,12 @@ public class UserInputCommand {
         return params;
     }
 
-    public String getParamsText() {
-        System.out.println(params);
-        System.out.println(params.subList(1, params.size()));
-        return String.join(" ", params.subList(1, params.size()));
+    public String getParamsText(int from) {
+        return String.join(" ", params.subList(from, params.size()));
+    }
+
+    public String getParamsText(int from, int to) {
+        return String.join(" ", params.subList(from, to));
     }
 
     @Override

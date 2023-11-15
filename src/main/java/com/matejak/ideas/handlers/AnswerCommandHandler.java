@@ -8,6 +8,7 @@ import com.matejak.ideas.model.Question;
 import com.matejak.ideas.model.Answer;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -41,11 +42,11 @@ public class AnswerCommandHandler extends BaseCommandHandler {
             case LIST:
                 LOG.log(Level.INFO, "List of answers...");
 
-                if (command.getParams().size() != 1) {
-                    throw new IllegalArgumentException("Answer list require one and only one param.");
+                if (command.getParams().isEmpty()) {
+                    throw new IllegalArgumentException("Answer list require one or more params.");
                 }
 
-                String questionName = command.getParams().get(0);
+                String questionName = command.getParamsText(0);
                 Question question = questionDao.findOne(questionName)
                         .orElseThrow(() -> new IllegalArgumentException("Question not found: " + questionName));
 
@@ -54,13 +55,18 @@ public class AnswerCommandHandler extends BaseCommandHandler {
 
             case ADD:
                 LOG.log(Level.INFO, "Add answer");
+                int sep = command.getParams().lastIndexOf("/");
 
-                if (command.getParams().size() != 2) {
+                if (command.getParams().size() < 2) {
                     throw new IllegalArgumentException("Wrong command format. Check `help` for more information.");
                 }
+                if (sep == -1) {
+                    throw new IllegalArgumentException("Wrong command format. Need `/` between question and adding " +
+                            "answer. Check `help` for more information.");
+                }
 
-                questionName = command.getParams().get(0);
-                String answerName = command.getParams().get(1);
+                questionName = command.getParamsText(0, sep);
+                String answerName = command.getParamsText(sep + 1);
 
                 question = questionDao.findOne(questionName)
                         .orElseThrow(() -> new IllegalArgumentException("Question not found: " + questionName));
