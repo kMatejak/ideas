@@ -1,1 +1,1 @@
-[{"name":"C3PO"},{"name":"R2D2"},{"name":"HK-47"}]
+[{"name":"C3PO"},{"name":"R2D2"}]

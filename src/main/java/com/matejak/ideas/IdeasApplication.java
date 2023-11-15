@@ -21,12 +21,11 @@ public class IdeasApplication {
     private void start() {
 
         //
-        // TODO obsługa spacji w przyjmowaniu danych od użytkownika (są różne opcje na rozwiązanie)
-        // TODO wprowadzenie bazy danych do przechowywania danych
-        // TODO bardziej generyczne DAO (wiąże się z wprowadzeniem bazy danych; przy zachowaniu
-        //      przechowywania w plikach - wynieść powtarzalne fragmenty wyżej) i/lub framework do obsługi danych
-        // TODO implementacja całego CRUD-a (dodawanie, odczytywanie, aktualizowanie, usuwanie)
-        // TODO wprowadzenie wyrażeń typu lambda w miejscach rozbudowanych pętli
+        // - TODO support for whitespaces into user's entering data (different possible approaches)
+        // - TODO database for storing data
+        // - TODO more generic DAO (related to adding a database) and/or framework for data handling
+        // - TODO full CRUD implementation
+        // - TODO lambda expressions for complex loops
         //
 
 
