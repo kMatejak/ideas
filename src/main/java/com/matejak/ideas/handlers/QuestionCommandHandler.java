@@ -6,6 +6,7 @@ import com.matejak.ideas.input.UserInputCommand;
 import com.matejak.ideas.model.Category;
 import com.matejak.ideas.model.Question;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -50,12 +51,12 @@ public class QuestionCommandHandler extends BaseCommandHandler {
             case ADD:
                 LOG.log(Level.INFO, "Add question");
 
-                if (command.getParams().size() != 2) {
+                if (command.getParams().size() < 2) {
                     throw new IllegalArgumentException("Wrong command format. Check `help` for more information.");
                 }
 
                 String categoryName = command.getParams().get(0);
-                String questionName = command.getParams().get(1);
+                String questionName = command.getParamsText();
 
                 Category category = categoryDao.findOne(categoryName)
                         .orElseThrow(() -> new IllegalArgumentException("Category not found: " + categoryName));

@@ -3,6 +3,7 @@ package com.matejak.ideas.input;
 import com.matejak.ideas.Action;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class UserInputCommand {
@@ -42,6 +43,12 @@ public class UserInputCommand {
 
     public List<String> getParams() {
         return params;
+    }
+
+    public String getParamsText() {
+        System.out.println(params);
+        System.out.println(params.subList(1, params.size()));
+        return String.join(" ", params.subList(1, params.size()));
     }
 
     @Override
